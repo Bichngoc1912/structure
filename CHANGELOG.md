@@ -4,3 +4,4 @@
 - install husky
 - config prettify
 - add tailwindcss
+- test component Button

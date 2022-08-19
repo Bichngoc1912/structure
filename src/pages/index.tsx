@@ -13,9 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-32 h-64 bg-red-200">
-        <Button>hihih</Button>
-      </div>
+      <Button>hihih</Button>
     </div>
   );
 };
