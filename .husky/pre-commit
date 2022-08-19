@@ -3,4 +3,4 @@
  echo "husky running ....."
 
 yarn check:ts 
-yarn pretiffy
+yarn prettify
