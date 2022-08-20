@@ -1,51 +1,46 @@
-import {
-  faCalendar,
-  faTrashCan,
-  faPenToSquare,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { formatNumber } from '@/helper/numberHelper';
 import { CardProps } from "./types";
-
+import Image from "next/image";
 function Cart(props: CardProps) {
-  const { title, dateTime } = props;
+  const { title, src, remainProduct, price, discount, priceDiscount } = props;
 
   return (
-    <div className="rounded-sm border border-zinc-400 w-full bg-slate-50 py-2 px-4 shadow-white">
-      <div className="mb-2">
-        <div className="flex items-center ">
-          <FontAwesomeIcon
-            icon={faCalendar}
-            width={12}
-            height={12}
-            color="gray"
-            className="mr-2"
-          />
-          <span className="sm:text-sm text-xs">{dateTime}</span>
+    <div className="rounded-lg border border-zinc-400 w-full p-2 shadow-white w-44 mr-2 flex flex-col justify-between">
+      <div
+        style={{ width: '100%', height: 100 }}
+        className="relative hover:opacity-70"
+      >
+        <Image
+          layout="fill"
+          objectFit="contain"
+          src={src}
+          alt="img...."
+          className="tw-rounded-xl"
+        />
+      </div>
+
+      <div style={{ height: 110 }}>
+        <div  className="truncate">
+          <span className='text-sm'>{title}</span>
+        </div>
+        <div className="block">
+          {remainProduct && (
+            <><span className="text-amber-500 text-xs">Còn {remainProduct} sản phẩm</span> <br /></>
+          )}
+          
+          <span className="text-red-500 text-xs">{formatNumber(price)} đ</span>
+          {discount && (
+            <div className="flex items-end">
+              <span className="text-sm text-gray-500 mr-2 line-through text-xs"> {formatNumber(priceDiscount)} đ</span>
+              <span className="text-red-600 text-xs">{discount} %</span>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="flex items-center">
-        <div className="w-4/5 font-medium">
-          <h4>{title}</h4>
-        </div>
-
-        <div className="w-1/5 flex justify-end">
-          <FontAwesomeIcon
-            icon={faPenToSquare}
-            height={12}
-            width={12}
-            color="#3B82F6"
-            className="hover:cursor-pointer mr-2"
-          />
-          <FontAwesomeIcon
-            icon={faTrashCan}
-            height={12}
-            width={12}
-            color="red"
-            className="hover:cursor-pointer"
-          />
-        </div>
-      </div>
+      <div>
+         <button className="py-2 px-4 border-red-500 border rounded-md text-red-500 font-medium w-full">Thêm vào giỏ</button>
+       </div>
     </div>
   );
 }
