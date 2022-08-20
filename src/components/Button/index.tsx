@@ -29,7 +29,7 @@ function Button(props: ButtonProps) {
           className="mr-2"
           width={widthIcon ? widthIcon : 12}
           height={heightIcon ? heightIcon : 12}
-          color={colorIcon ? colorIcon : 'white'}
+          color={colorIcon ? colorIcon : "white"}
         />
       )}
 
